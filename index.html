@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Daily Insight - Wawasan harian tentang teknologi, desain, dan kehidupan.">
+  <title>The Daily Insight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #17243b;
+      --muted: #667085;
+      --blue: #315bdb;
+      --cream: #f7f8fc;
+      --line: #e7eaf0;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--white);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--ink);
+      color: white !important;
+    }
+
+    .hero {
+      padding: 64px 0 44px;
+      background: linear-gradient(180deg, #fbfcff 0%, white 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 24px;
+    }
+
+    .featured {
+      position: relative;
+      min-height: 460px;
+      border-radius: 16px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, transparent 25%, rgba(10,20,40,.82) 100%),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85") center/cover;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .featured-content { padding: 38px; color: white; }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 10px;
+      border-radius: 6px;
+      background: var(--blue);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .featured h1 {
+      max-width: 620px;
+      margin: 0 0 12px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.05;
+    }
+
+    .meta { color: rgba(255,255,255,.78); font-size: 13px; }
+
+    .side-list {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .side-card {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+    }
+
+    .side-card img {
+      width: 100%;
+      height: 118px;
+      object-fit: cover;
+      border-radius: 9px;
+    }
+
+    .side-card h3 {
+      margin: 7px 0 9px;
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .side-card .category { color: var(--blue); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+    .latest { padding: 48px 0 80px; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+    }
+
+    .section-heading a { color: var(--blue); font-size: 14px; font-weight: 700; }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .article-card {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+    }
+
+    .article-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .article-card .category { color: var(--blue); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+
+    .article-card h3 {
+      margin: 9px 0;
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .article-card p { color: var(--muted); line-height: 1.6; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner { display:flex; justify-content:space-between; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .side-list { grid-template-columns: repeat(3, 1fr); grid-template-rows: none; }
+      .side-card { grid-template-columns: 1fr; }
+      .side-card img { height: 180px; }
+      .article-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(100% - 28px, 1120px); }
+      nav { height: 68px; }
+      .nav-links a:not(.button) { display: none; }
+      .nav-links { gap: 10px; }
+      .hero { padding-top: 28px; }
+      .featured { min-height: 420px; }
+      .featured-content { padding: 24px; }
+      .side-list, .article-grid { grid-template-columns: 1fr; }
+      .side-card { grid-template-columns: 110px 1fr; }
+      .side-card img { height: 110px; }
+      .article-card img { height: 240px; }
+      .footer-inner { gap: 12px; flex-direction: column; }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#">The Daily Insight</a>
+      <div class="nav-links">
+        <a href="#latest">Artikel</a>
+        <a href="#">Kategori</a>
+        <a href="#">Tentang</a>
+        <a class="button" href="#newsletter">Berlangganan</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <article class="featured">
+          <div class="featured-content">
+            <span class="tag">Teknologi</span>
+            <h1>AI Bukan Lagi Masa Depan, Ini Cara Kita Hidup Bersamanya</h1>
+            <div class="meta">Diajeng Rahma &nbsp;•&nbsp; 8 menit baca &nbsp;•&nbsp; 22 November 2026</div>
+          </div>
+        </article>
+
+        <div class="side-list">
+          <article class="side-card">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=500&q=80" alt="Meja kerja">
+            <div>
+              <span class="category">Produktivitas</span>
+              <h3>7 Kebiasaan untuk Menjadi Lebih Fokus Setiap Hari</h3>
+              <span class="meta" style="color:var(--muted)">5 menit baca</span>
+            </div>
+          </article>
+          <article class="side-card">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=500&q=80" alt="Laptop">
+            <div>
+              <span class="category">Desain</span>
+              <h3>Tren UI yang Akan Membentuk Pengalaman Digital</h3>
+              <span class="meta" style="color:var(--muted)">6 menit baca</span>
+            </div>
+          </article>
+          <article class="side-card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80" alt="Pemandangan alam">
+            <div>
+              <span class="category">Gaya Hidup</span>
+              <h3>Menghadirkan Ketenangan di Tengah Kehidupan Sibuk</h3>
+              <span class="meta" style="color:var(--muted)">4 menit baca</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="latest container" id="latest">
+      <div class="section-heading">
+        <h2>Artikel Terbaru</h2>
+        <a href="#">Lihat semua →</a>
+      </div>
+      <div class="article-grid">
+        <article class="article-card">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=700&q=80" alt="Diskusi tim">
+          <span class="category">Bisnis</span>
+          <h3>Tim Kecil, Dampak Besar: Rahasia Kerja yang Efektif</h3>
+          <p>Belajar membangun budaya kolaborasi tanpa menambah kompleksitas organisasi.</p>
+          <div class="meta" style="color:var(--muted)">20 November 2026 • 7 menit</div>
+        </article>
+        <article class="article-card">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80" alt="Pelajar berdiskusi">
+          <span class="category">Pengembangan Diri</span>
+          <h3>Belajar Sepanjang Hayat dalam Dunia yang Terus Berubah</h3>
+          <p>Strategi praktis menjaga rasa ingin tahu dan relevansi kemampuan setiap tahun.</p>
+          <div class="meta" style="color:var(--muted)">19 November 2026 • 5 menit</div>
+        </article>
+        <article class="article-card">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=700&q=80" alt="Kode di layar">
+          <span class="category">Pemrograman</span>
+          <h3>Menulis Kode yang Mudah Dibaca dan Dipelihara</h3>
+          <p>Prinsip sederhana yang membantu produk tetap sehat seiring pertumbuhan tim.</p>
+          <div class="meta" style="color:var(--muted)">18 November 2026 • 9 menit</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="newsletter">
+    <div class="container footer-inner">
+      <strong>The Daily Insight</strong>
+      <span>© 2026 The Daily Insight. Semua hak dilindungi.</span>
+    </div>
+  </footer>
+</body>
+</html>
